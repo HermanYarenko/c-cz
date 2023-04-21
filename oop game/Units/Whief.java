@@ -6,9 +6,9 @@ public class Whief extends Unit {
         super(name, 20, 0.8f, 3, 2, 10);
     }
 
-    
+    @Override
     public String toString() {
-        return name;
+        return "Разбойник";
     }
 
     void dodge() {
@@ -17,5 +17,14 @@ public class Whief extends Unit {
 
     void stealth() {
 
+    }
+
+    public void step() {
+        
+    }
+
+    
+    public String getInfo() {
+        return super.getInfo();
     }
 }

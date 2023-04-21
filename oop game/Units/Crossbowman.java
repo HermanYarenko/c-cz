@@ -6,7 +6,16 @@ public class Crossbowman extends Shoter{
     }
 
     public String toString() {
-        return name;
+        return "Арбалетчик";
+    }
+
+    public void step() {
+
+    }
+
+    
+    public String getInfo() {
+        return super.getInfo();
     }
 
 }

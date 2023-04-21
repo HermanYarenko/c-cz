@@ -6,17 +6,19 @@ public class Wizard extends Magican{
         super(name, 30, 0.7f, 2, 4, 5, 10, 1, 5, 50);
     }
 
-  
     public String toString() {
-        return name;
+        return "Маг";
     }
 
-    void fire() {
+
+
+    public void step() {
 
     }
 
-    void freeze(){
-
-    }
     
+    public String getInfo() {
+        return super.getInfo();
+    }
+
 }
