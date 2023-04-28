@@ -1,10 +1,13 @@
 package Units;
+
+import java.util.ArrayList;
+
 public class Spearman extends Unit {
 
-    public Spearman(String name){
-        super(name, 30, 0.6f, 2, 4, 30);
-    }
-
+    public Spearman(String name, ArrayList<Unit> team,int x,int y){
+            super(name, 30, 0.6f, 3, 4, 30, team,x,y);
+        }
+    
     
     public String toString() {
         return "Копейщик";
@@ -12,7 +15,7 @@ public class Spearman extends Unit {
 
     
     public void step() {
-        
+       System.out.println("spearman");
     }
 
 

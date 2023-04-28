@@ -1,10 +1,21 @@
 package Units;
-public abstract class Unit implements GameInterface{
-    protected String name;
-    protected float maxHp, currentHp, luck, armor;
-    protected int speed, attack;
 
-    Unit(String name, float maxHp, float luck, int speed, int attack, float armor){
+import java.util.ArrayList;
+
+import Game.Cordiante;
+
+public abstract class Unit implements GameInterface{
+    protected static String name;
+    protected float maxHp, currentHp, luck, armor;
+    public int speed;
+    protected int attack;
+    protected ArrayList<Unit> team, enemy;
+    protected Cordinate cordinate;
+    
+    
+    
+
+    Unit(String name, float maxHp, float luck, int speed, int attack, float armor, ArrayList<Unit> team, int x, int y){
         this.name = name;
         this.maxHp = maxHp;
         this.currentHp = maxHp;
@@ -12,10 +23,13 @@ public abstract class Unit implements GameInterface{
         this.speed =speed;
         this.attack = attack;
         this.armor = armor;
+        this.team = team;
+        this.cordinate = new Cordiante(x, y);
     }
 
-    void attack(){
-
+    void attack(Unit target){
+        target.getDmage(attack);
+        System.out.println(this.introduce() + " атакует " + target.introduce());
     }
     void await(){
 
@@ -24,11 +38,25 @@ public abstract class Unit implements GameInterface{
 
     }
 
-    void die(){
-
+    boolean die(){
+        if (currentHp <= 0) {
+            return true;
+        }else{
+            return false;
+        }
     }
 
+    public void getDmage(float damage){
+        this.currentHp -= damage;
+        if (this.currentHp > this.maxHp) {
+            this.currentHp = this.maxHp;
+        }
+        if (this.currentHp < 0) {
+            this.currentHp = 0;
+        }
+    }
 
+    @Override
     public String getInfo() {
         return "[" + name + " " + toString() + "] hp:" + 
         currentHp + "/" + maxHp + " luck:" + luck 
@@ -36,4 +64,27 @@ public abstract class Unit implements GameInterface{
         + " armor:" + armor;
     }
 
-}
+    @Override
+    public void step(ArrayList<Unit> enemy) {
+        System.out.println(getClass().getName());
+    }
+
+    public Unit findNearUnit(ArrayList<Unit> team){
+        Unit nearUnit = null;
+        float minDist = Float.MAX_VALUE;
+        for (Unit unit : team) {
+            float dist = unit.cordinate.distance(this.cordinate);
+            if (minDist > dist) {
+                nearUnit = unit;
+                minDist = dist;
+            }
+        }
+        return nearUnit;
+    }
+
+    @Override
+    public String introduce() {
+        return this + " " + this.name;
+    }
+
+

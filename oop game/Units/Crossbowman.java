@@ -1,8 +1,10 @@
 package Units;
 
+import java.util.ArrayList;
+
 public class Crossbowman extends Shoter{
-    public Crossbowman(String name) {
-        super(name, 20, 0.5f, 2, 2, 2, 50, 0.5f, 10);
+    public Crossbowman(String name, ArrayList<Unit> team,int x,int y) {
+        super(name, 20, 0.5f, 4, 2, 2, 50, 0.5f, 10, team,x, y);
     }
 
     public String toString() {
@@ -10,7 +12,7 @@ public class Crossbowman extends Shoter{
     }
 
     public void step() {
-
+        System.out.println(getClass().getName());
     }
 
     

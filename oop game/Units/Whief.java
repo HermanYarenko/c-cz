@@ -1,9 +1,11 @@
 package Units;
 
+import java.util.ArrayList;
+
 public class Whief extends Unit {
 
-    public Whief(String name) {
-        super(name, 20, 0.8f, 3, 2, 10);
+   public Whief(String name, ArrayList<Unit> team,int x,int y) {
+        super(name, 20, 0.8f, 3, 2, 10, team,x,y);
     }
 
     @Override

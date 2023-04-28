@@ -1,7 +1,9 @@
 package Units;
 
-public class GameInterface {
-    void step();
+public interface GameInterface {
+    void step(ArrayList<Unit> enemy);
 
     String getInfo();
-} 
+
+    String introduce();
+}
