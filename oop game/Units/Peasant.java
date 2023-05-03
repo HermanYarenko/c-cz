@@ -11,17 +11,18 @@ public class Peasant extends Unit{
         super(name, 10, 0.5f, 1, 1, 0, team, x, y);
         this.readiness = true;
     }
-
+    @Override
+    public String getInfo() {
+        return super.getInfo();
+    }
+    
     @Override
     public String toString() {
         return "Крестьянин";
     }
 
 
-    @Override
-    public String getInfo() {
-        return super.getInfo();
-    }
+    
 
     @Override
     public void step(ArrayList<Unit> enemy) {

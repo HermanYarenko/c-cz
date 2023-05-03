@@ -28,7 +28,7 @@ public class Magican extends Shoter{
     
         @Override
         public String getInfo() {
-            return super.getInfo() + " mana:" + currentMana + "/" + maxMana;
+            return super.getInfo() +  " \u26a1:" + currentMana + "/" + maxMana;
         }
     
         @Override

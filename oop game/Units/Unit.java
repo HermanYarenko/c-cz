@@ -10,7 +10,7 @@ public abstract class Unit implements GameInterface{
     public int speed;
     protected int attack;
     protected ArrayList<Unit> team, enemy;
-    protected Cordinate cordinate;
+    protected Cordiante cordinate;
     
     
     
@@ -27,9 +27,10 @@ public abstract class Unit implements GameInterface{
         this.cordinate = new Cordiante(x, y);
     }
 
+   
     void attack(Unit target){
         target.getDmage(attack);
-        System.out.println(this.introduce() + " атакует " + target.introduce());
+        //System.out.println(this.introduce() + " атакует " + target.introduce());
     }
     void await(){
 
@@ -58,15 +59,13 @@ public abstract class Unit implements GameInterface{
 
     @Override
     public String getInfo() {
-        return "[" + name + " " + toString() + "] hp:" + 
-        currentHp + "/" + maxHp + " luck:" + luck 
-        + " speed:" + speed + " attack:" + attack
-        + " armor:" + armor;
+        return toString() + " " + name + " \u2665:" +
+        currentHp + "/" + maxHp + " \u2659:" + speed + " \u2618:" + luck + " \u2694:" + attack;
     }
 
     @Override
     public void step(ArrayList<Unit> enemy) {
-        System.out.println(getClass().getName());
+        //System.out.println(getClass().getName());
     }
 
     public Unit findNearUnit(ArrayList<Unit> team){
@@ -86,5 +85,17 @@ public abstract class Unit implements GameInterface{
     public String introduce() {
         return this + " " + this.name;
     }
+
+    public int[] getCoords() {
+        return new int[]{this.cordinate.y, cordinate.x};
+    }
+
+    public float getHp() {
+        return currentHp;
+    }
+
+
+
+}
 
 

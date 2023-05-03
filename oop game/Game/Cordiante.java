@@ -14,3 +14,4 @@ public class Cordiante {
         float dy = coordinate.y - this.y;
         return (float) Math.sqrt(dx*dx+dy*dy);
     }
+}
