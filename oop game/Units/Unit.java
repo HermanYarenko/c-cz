@@ -65,8 +65,17 @@ public abstract class Unit implements GameInterface{
 
     @Override
     public void step(ArrayList<Unit> enemy) {
-        //System.out.println(getClass().getName());
+        if (die()) {
+            return;
+        }
+        Unit target = findNearUnit(enemy);
+        if (target.cordinate.distance(this.cordinate) < 2) {
+            attack(target);
+        }else {
+            move(target);
+        }
     }
+
 
     public Unit findNearUnit(ArrayList<Unit> team){
         Unit nearUnit = null;
