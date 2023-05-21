@@ -14,4 +14,10 @@ public class Cordiante {
         float dy = coordinate.y - this.y;
         return (float) Math.sqrt(dx*dx+dy*dy);
     }
+    public  int[] distanceXY(Cordiante cordinate){
+        int[] result = new int[2];
+        result[0] = cordinate.x - this.x;
+        result[1] = cordinate.y - this.y;
+        return result;
+    }
 }

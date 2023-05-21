@@ -93,9 +93,61 @@ public abstract class Unit implements GameInterface{
     public float getHp() {
         return currentHp;
     }
+    protected void move(Unit target){
+        int dx = target.cordinate.distanceXY(this.cordinate)[0];
+        int dy = target.cordinate.distanceXY(this.cordinate)[1];
+        if (Math.abs(dx) < Math.abs(dy)){
+            moveY(dx, dy, true);
+        }else {
+            moveX(dx, dy, true);
+        }
+    }
+
+    private void moveX(int dx, int dy, boolean flag){
+        if (dx > 0) {
+            if (isEmptyPosition(this.cordinate.x-1, this.cordinate.y)) {
+                this.cordinate.x--;
+            }else if(flag){
+                moveY(dx,dy, false);
+            }
+        }else {
+            if (isEmptyPosition(this.cordinate.x+1, this.cordinate.y)) {
+                this.cordinate.x++;
+            }else if(flag){
+                moveY(dx,dy, false);
+            }
+        }
+    }
+    private void moveY(int dx, int dy, boolean flag){
+        if (dy > 0) {
+            if (isEmptyPosition(this.cordinate.x, this.cordinate.y-1)) {
+                this.cordinate.y--;
+            }else if(flag){
+                moveX(dx,dy, false);
+            }
+        }else {
+            if (isEmptyPosition(this.cordinate.x, this.cordinate.y+1)) {
+                this.cordinate.y++;
+            }else if(flag){
+                moveX(dx,dy, false);
+            }
+    }
+    }
 
 
 
+    protected boolean isEmptyPosition(int x, int y){
+        for (Unit unit: team) {
+            if (unit.cordinate.x == x && unit.cordinate.y == y) {
+                if (!unit.die()) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }
+
+
 
 
